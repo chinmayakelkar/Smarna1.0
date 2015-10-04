@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Smarna</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Smarna_title">Smarna</string>
+    <string name="Email_hint">Email</string>
+    <string name="Registeruser">Not a member? Sign up now</string>
+    <string name="Loginuser">Already registered! Login me</string>
+    <string name="Register">Register</string>
+
+</resources>
