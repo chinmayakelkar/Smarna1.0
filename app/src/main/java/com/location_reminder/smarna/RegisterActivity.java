@@ -4,31 +4,23 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request.Method;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class RegisterActivity extends AppCompatActivity {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+
     EditText etusername, etemailid, etpassword;
     Button btregister;
     private ProgressDialog pDialog;
-    private SessionManager session;
-    private SQLiteHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,36 +30,56 @@ public class RegisterActivity extends AppCompatActivity {
         etemailid = (EditText) findViewById(R.id.emailid);
         etpassword = (EditText) findViewById(R.id.password);
         btregister = (Button) findViewById(R.id.bregister);
-        //bregister.setOnClickListener(this);
+
         Button bregister;
         TextView signinScreen = (TextView) findViewById(R.id.signin_link);
 
-        // Progress dialog
+
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-        // Session manager
-        session = new SessionManager(getApplicationContext());
-
-        // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
-        if (session.isLoggedIn()) {
-            // User is already logged in. Take him to main activity
-            Intent intent = new Intent(RegisterActivity.this,
-                    Logout.class);
-            startActivity(intent);
-            finish();
-        }
-        // Register Button Click event
         btregister.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 String name = etusername.getText().toString().trim();
                 String email = etemailid.getText().toString().trim();
                 String password = etpassword.getText().toString().trim();
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    registerUser(name, email, password);
-                } else {
+
+                    ParseUser user = new ParseUser();
+                    user.setUsername(name);
+                    user.setPassword(password);
+                    user.setEmail(email);
+                    user.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                // Sign up didn't succeed. Look at the ParseException
+                                // to figure out what went wrong
+                                switch(e.getCode()){
+                                    case ParseException.USERNAME_TAKEN:
+                                        Toast.makeText(getApplicationContext(), "An account with this email id already exists!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case ParseException.USERNAME_MISSING:
+                                        Toast.makeText(getApplicationContext(), "Please enter your email!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case ParseException.PASSWORD_MISSING:
+                                        Toast.makeText(getApplicationContext(), "Pleas enter your password!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    default:
+                                        Toast.makeText(getApplicationContext(), "An error occured in Registration...Please try again", Toast.LENGTH_SHORT).show();
+                                        break;
+                                }
+                                //view.setEnabled(true);
+                            }
+                        }
+                });
+                }
+                else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
                             .show();
@@ -87,127 +99,5 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-
-    private void registerUser(final String name, final String email,
-                              final String password) {
-        // Tag used to cancel the request
-        String tag_string_req = "req_register";
-
-        pDialog.setMessage("Registering ...");
-        showDialog();
-
-        StringRequest strReq = new StringRequest(Method.POST,
-                AppConfig.URL_REGISTER, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Register Response: " + response.toString());
-                hideDialog();
-
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
-                    if (!error) {
-                        // User successfully stored in MySQL
-                        // Now store the user in sqlite
-                        String uid = jObj.getString("uid");
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.getString("name");
-                        String email = user.getString("email");
-
-
-                        // Inserting row in users table
-                        db.addUser(name, email, uid);
-
-                        Toast.makeText(getApplicationContext(), "Welcome to Smarna", Toast.LENGTH_LONG).show();
-
-
-                        //Take the user to task list screen
-                        Intent intent = new Intent(RegisterActivity.this, Logout.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-
-                        // Error occurred in registration. Get the error
-                        // message
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Registration Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting params to register url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("name", name);
-                params.put("email", email);
-                params.put("password", password);
-
-                return params;
-            }
-
-        };
-
-        // Adding request to request queue
-        AppController.getInstance(this).addToRequestQueue(strReq, tag_string_req);
-    }
-
-    private void showDialog() {
-        if (!pDialog.isShowing())
-            pDialog.show();
-    }
-
-    private void hideDialog() {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
-    }
 }
-        // Listening to Login Screen link
-        //signinScreen.setOnClickListener(this);
-
-
-   /* @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.bregister:
-                String username=etusername.getText().toString();
-                String password=etpassword.getText().toString();
-                String emailid=etemailid.getText().toString();
-                User user=new User(username,emailid,password);
-                registeredUser(user);
-                break;
-            case R.id.signin_link:
-                finish();
-        }
-    }
-
-    private void registeredUser(User user)
-    {
-        //Check network connection
-        ServerRequests serverRequests=new ServerRequests(this);
-        serverRequests.StoreUserDatabgd(user, new GetUserCallBack() {
-            @Override
-            public void complete(User returnedUser) {
-                //toast message
-                startActivity(new Intent(RegisterActivity.this,MainActivity.class));
-
-            }
-        });
-    }
-    */
 
