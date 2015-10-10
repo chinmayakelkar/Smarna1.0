@@ -13,7 +13,7 @@ public class Smarnaparser extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        //ParseObject.registerSubclass(PUser.class);
+        ParseObject.registerSubclass(PUser.class);
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "JwsGVlZa8qrHwfknR9PJ5C9PhzlaF4Rs4htyi0ga", "U9iAU7cbHx6E8aSImcmz76wKurEz6rYosXqZZTgE");
         //ParseACL.setDefaultACL(new ParseACL(), true);

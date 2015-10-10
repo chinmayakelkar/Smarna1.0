@@ -17,7 +17,7 @@ import java.util.HashMap;
  */
 public class Logout extends AppCompatActivity {
 
-    Button blogout;
+    Button blogout,addtask;
     TextView tv2, tv3;
 
     @Override
@@ -27,8 +27,9 @@ public class Logout extends AppCompatActivity {
         tv2 = (TextView) findViewById(R.id.textView2);
         tv3 = (TextView) findViewById(R.id.textView3);
         blogout = (Button) findViewById(R.id.blogout);
+        addtask=(Button)findViewById(R.id.addtask);
 
-        ParseUser currentUser= (PUser)ParseUser.getCurrentUser();
+        ParseUser currentUser= ParseUser.getCurrentUser();
         String struser=currentUser.getUsername().toString();
         String email=currentUser.getEmail().toString();
         tv2.setText("Your are logged in as "+ struser);
@@ -39,15 +40,24 @@ public class Logout extends AppCompatActivity {
             public void onClick(View v) {
                 //logoutUser();
                 ParseUser.logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+                //ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
                 Intent intent = new Intent(Logout.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
-        //blogout.setOnClickListener(this);
-        //displayuserdetails();
-        //userlocalstore=new UserLocalStore(this);
+        addtask.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //logoutUser();
+
+                //ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+                Intent intent = new Intent(Logout.this, AddTask.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
 }

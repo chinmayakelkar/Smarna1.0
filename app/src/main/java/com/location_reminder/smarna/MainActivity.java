@@ -15,10 +15,11 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button blogin;
 
     EditText etemail, etpassword;
@@ -40,8 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         registerScreen.setOnClickListener(this);
         
         ParseUser currentUser = ParseUser.getCurrentUser();
-        //pDialog = new ProgressDialog(this);
-        //pDialog.setCancelable(false);
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
         if (currentUser != null) {
             Intent intent = new Intent(MainActivity.this, Logout.class);
             startActivity(intent);
@@ -71,14 +73,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 case ParseException.USERNAME_TAKEN:
                                     Toast.makeText(getApplicationContext(), "An account with this email id already exists!", Toast.LENGTH_SHORT).show();
                                     break;
-                                case ParseException.USERNAME_MISSING:
+                                case ParseException.EMAIL_MISSING:
                                     Toast.makeText(getApplicationContext(), "Please enter your email!", Toast.LENGTH_SHORT).show();
                                     break;
                                 case ParseException.PASSWORD_MISSING:
                                     Toast.makeText(getApplicationContext(), "Pleas enter your password!", Toast.LENGTH_SHORT).show();
                                     break;
                                 case ParseException.OBJECT_NOT_FOUND:
-                                    Toast.makeText(getApplicationContext(), "Sorry Incorrect Password! Please try again", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Sorry incorrect combination of Email and Password!.... Please try again", Toast.LENGTH_SHORT).show();
                                     break;
                                 default:
                                     Toast.makeText(getApplicationContext(), "An error occured in Login...Please try again", Toast.LENGTH_SHORT).show();

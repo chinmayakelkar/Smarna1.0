@@ -5,22 +5,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText etusername, etemailid, etpassword;
     Button btregister;
-    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +34,35 @@ public class RegisterActivity extends AppCompatActivity {
         etpassword = (EditText) findViewById(R.id.password);
         btregister = (Button) findViewById(R.id.bregister);
 
-        Button bregister;
+
         TextView signinScreen = (TextView) findViewById(R.id.signin_link);
+        //final String emailid= etemailid.getText().toString().trim();
 
 
-        pDialog = new ProgressDialog(this);
-        pDialog.setCancelable(false);
+        //pDialog = new ProgressDialog(this);
+        //pDialog.setCancelable(false);
+        /*etemailid.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!(emailValidator(emailid)))
+                {
+                    Toast.makeText(getApplicationContext(), "Pleae enter a valid email address!", Toast.LENGTH_SHORT).show();
+            }
+            }
+        });*/
         btregister.setOnClickListener(new View.OnClickListener() {
-            public void onClick(final View view) {
+            public void onClick( final View view) {
+                view.setEnabled(false);
                 String name = etusername.getText().toString().trim();
                 String email = etemailid.getText().toString().trim();
                 String password = etpassword.getText().toString().trim();
@@ -62,10 +85,13 @@ public class RegisterActivity extends AppCompatActivity {
                                 // to figure out what went wrong
                                 switch(e.getCode()){
                                     case ParseException.USERNAME_TAKEN:
-                                        Toast.makeText(getApplicationContext(), "An account with this email id already exists!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "An account with this username already exists!", Toast.LENGTH_SHORT).show();
                                         break;
-                                    case ParseException.USERNAME_MISSING:
+                                    case ParseException.EMAIL_MISSING:
                                         Toast.makeText(getApplicationContext(), "Please enter your email!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case ParseException.EMAIL_TAKEN:
+                                        Toast.makeText(getApplicationContext(), "An account with this email already exits!", Toast.LENGTH_SHORT).show();
                                         break;
                                     case ParseException.PASSWORD_MISSING:
                                         Toast.makeText(getApplicationContext(), "Pleas enter your password!", Toast.LENGTH_SHORT).show();
@@ -74,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "An error occured in Registration...Please try again", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
-                                //view.setEnabled(true);
+                                view.setEnabled(true);
                             }
                         }
                 });
@@ -99,5 +125,14 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
+    /*public boolean emailValidator(String email)
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }*/
 }
 
