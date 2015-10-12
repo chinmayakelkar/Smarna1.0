@@ -16,20 +16,23 @@
 
         <ImageView
             android:id="@+id/icon_image"
-            android:layout_width="69dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:contentDescription="@null"
-            android:paddingLeft="20dp"
+            android:paddingLeft="0dp"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
             android:src="@mipmap/app_icon" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_marginTop="14dp"
-            android:gravity="left"
-            android:paddingLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingRight="70dp"
+            android:layout_marginLeft="50dp"
             android:text="@string/Smarna_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffffff"
@@ -49,7 +52,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/rlayout2">
 
@@ -70,7 +73,7 @@
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingLeft="40dp"
@@ -83,34 +86,71 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
-            <Button
-                android:id="@+id/blogin"
+            <TextView
+                android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textView5"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="70dp"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="0dp"
+                android:text="@string/Intro3"
+                android:textColor="#A9A9A9"
+                android:textSize="20sp"
+                android:layout_below="@+id/textView5"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:paddingRight="40dp"
+                android:paddingTop="0dp"
+                android:text="@string/Intro4"
+                android:textColor="#A9A9A9"
+                android:textSize="20sp"
+                android:layout_below="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/bregister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"
+                android:text="@string/start"
+                android:textColor="#A9A9A9"
+                android:textSize="20sp"
+                android:layout_below="@+id/textView7"
+                android:layout_alignLeft="@+id/textView4"/>
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="OR"
+                android:layout_centerHorizontal="true"
+                android:textColor="#A9A9A9"
+                android:textSize="20sp"
+                android:layout_below="@+id/bregister" />
+
+            <Button
+                android:id="@+id/blogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView9"
+                android:layout_marginTop="25dp"
+                android:layout_alignLeft="@+id/textView4"
+                android:textSize="15sp"
                 android:background="@drawable/bgbackground"
                 android:gravity="center"
                 android:text="@string/Login"
                 android:textColor="#a6a6a6"
-                android:textStyle="bold" />
-            <Button
-                android:id="@+id/bregister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/blogin"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="70dp"
-                android:background="@drawable/bgregister"
-                android:gravity="center"
-                android:text="@string/Register"
-                android:textColor="#a6a6a6"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_alignRight="@+id/textView4"
+                android:layout_alignEnd="@+id/textView4" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
