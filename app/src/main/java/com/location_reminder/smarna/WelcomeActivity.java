@@ -14,14 +14,14 @@ import com.parse.ParseUser;
  */
 public class WelcomeActivity extends AppCompatActivity {
     Button blogin;
-    TextView bregister;
+    //TextView bregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homescreen);
+        setContentView(R.layout.getstarted);
         blogin=(Button)findViewById(R.id.blogin);
-        bregister=(TextView)findViewById(R.id.bregister);
+        //bregister=(TextView)findViewById(R.id.bregister);
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             Intent intent = new Intent(WelcomeActivity.this, Logout.class);
@@ -37,7 +37,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 finish();
             }
         });
-        bregister.setOnClickListener(new View.OnClickListener() {
+       /* bregister.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),
@@ -45,7 +45,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        });
+        });*/
     }
 
 }
