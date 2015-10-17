@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
 
                     ParseUser user = new ParseUser();
-                    user.setUsername(name);
+                    user.setUsername(name);//to enable login by email
                     user.setPassword(password);
                     user.setEmail(email);
                     user.signUpInBackground(new SignUpCallback() {
@@ -97,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "Pleas enter your password!", Toast.LENGTH_SHORT).show();
                                         break;
                                     default:
-                                        Toast.makeText(getApplicationContext(), "An error occured in Registration...Please try again", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Please enter a valid email address!", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
                                 view.setEnabled(true);

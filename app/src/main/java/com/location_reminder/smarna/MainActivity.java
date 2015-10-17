@@ -2,6 +2,7 @@ package com.location_reminder.smarna;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -21,7 +22,7 @@ import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button blogin;
-
+    TextView fgpassword;
     EditText etemail, etpassword;
 
    // private ProgressDialog pDialog;
@@ -36,8 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         blogin = (Button) findViewById(R.id.blogin);
 
         blogin.setOnClickListener(this);
-
+        TextView fgpassword=(TextView)findViewById(R.id.fgpassword);
+        fgpassword.setPaintFlags(fgpassword.getPaintFlags()|Paint.UNDERLINE_TEXT_FLAG);
         TextView registerScreen = (TextView) findViewById(R.id.register_link);
+        registerScreen.setPaintFlags(registerScreen.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
         registerScreen.setOnClickListener(this);
         
         ParseUser currentUser = ParseUser.getCurrentUser();

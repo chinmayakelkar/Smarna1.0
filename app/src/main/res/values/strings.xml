@@ -19,4 +19,5 @@
     <string name="Intro4">notifications for them</string>
     <string name="start">Let\'s Get Started!</string>
     <string name="Date">Date</string>
+    <string name="Fgpassword"><u>Forgot Password</u></string>
 </resources>
