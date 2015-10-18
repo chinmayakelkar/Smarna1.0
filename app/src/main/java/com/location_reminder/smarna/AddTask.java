@@ -16,9 +16,10 @@ import java.util.ArrayList;
 /**
  * Created by Chinmaya on 08-Oct-15.
  */
+
 public class AddTask extends AppCompatActivity{
 
-    Button voice;
+    Button voice, location;
      EditText taskdescription;
     static final int check=111;
     @Override
@@ -26,7 +27,17 @@ public class AddTask extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task);
         Button voice=(Button)findViewById(R.id.speak);
+        location=(Button)findViewById(R.id.setlocation);
         taskdescription=(EditText)findViewById(R.id.taskdescription);
+        location.setOnClickListener(new View.OnClickListener()
+                                    {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTask.this, MapActivity.class);
+
+                startActivity(intent);
+            }
+        });
         voice.setOnClickListener(new View.OnClickListener() {
 
             @Override

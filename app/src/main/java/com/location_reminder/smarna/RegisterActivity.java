@@ -2,10 +2,13 @@ package com.location_reminder.smarna;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -32,10 +35,15 @@ public class RegisterActivity extends AppCompatActivity {
         etusername = (EditText) findViewById(R.id.username);
         etemailid = (EditText) findViewById(R.id.emailid);
         etpassword = (EditText) findViewById(R.id.password);
+        //etusername.setHint(Html.fromHtml("<font color='#7B7B7B'>Username</font> "));
+        //etusername.setHintTextColor(Color.GRAY);
+        //etemailid.setHintTextColor(Color.GRAY);
+        //etpassword.setHintTextColor(Color.GRAY);
         btregister = (Button) findViewById(R.id.bregister);
 
 
         TextView signinScreen = (TextView) findViewById(R.id.signin_link);
+        signinScreen.setPaintFlags(signinScreen.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
         //final String emailid= etemailid.getText().toString().trim();
 
 
