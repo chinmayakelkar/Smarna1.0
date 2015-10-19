@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.admin.taskreminder.AddTask"
+    android:background="#53162325"
+    >
+
+    <TextView
+        android:text="@string/TaskDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginTop="70dp"
+        android:textColor="#f108040d"
+        android:textStyle="bold|italic"
+        android:theme="@style/AppTheme"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:textColorHighlight="#2661368e"
+        android:textAlignment="textStart"
+        android:layout_below="@+id/editText"
+        android:layout_toLeftOf="@+id/editText2"
+        android:layout_toStartOf="@+id/editText2" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:contentDescription="Date"
+        android:src="@android:drawable/ic_menu_my_calendar"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/editText2"
+        android:layout_toEndOf="@+id/editText2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:inputType="text"
+        android:layout_alignParentTop="true"
+        android:editable="true"
+        android:elegantTextHeight="true"
+        android:enabled="true"
+        android:text="          Task Description"
+        android:textAlignment="center"
+        android:textColor="#f108040d"
+        android:textColorHighlight="#2661368e"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:textStyle="bold|italic"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        android:width="@dimen/abc_action_bar_default_padding_end_material"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:outlineProvider="background" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:outlineProvider="background"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/textView2" />
+
+    <TextView
+        android:text="@string/TaskTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textColor="#f108040d"
+        android:textStyle="bold|italic"
+        android:theme="@style/AppTheme"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:textColorHighlight="#2661368e"
+        android:textAlignment="textStart"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_alignTop="@+id/editText3"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editText3"
+        android:outlineProvider="background"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toLeftOf="@+id/imageButton2"
+        android:layout_toStartOf="@+id/imageButton2" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton2"
+        android:contentDescription="TimePicker"
+        android:src="@android:drawable/ic_popup_reminder"
+        android:layout_alignBottom="@+id/editText3"
+        android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton3"
+        android:contentDescription="TimePicker"
+        android:src="@drawable/location8"
+        android:layout_below="@+id/editText3"
+        android:layout_toRightOf="@+id/editText3"
+        android:layout_toEndOf="@+id/editText3"
+        android:layout_marginTop="84dp" />
+
+    <TextView
+        android:text="Choose Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textColor="#f108040d"
+        android:textStyle="bold|italic"
+        android:theme="@style/AppTheme"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:textColorHighlight="#2661368e"
+        android:textAlignment="textStart"
+        android:layout_alignBottom="@+id/imageButton3"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+</RelativeLayout>
