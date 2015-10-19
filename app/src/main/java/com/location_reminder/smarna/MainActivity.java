@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if (user != null) {
-                            Intent intent = new Intent(MainActivity.this, Logout.class);
+                            Intent intent = new Intent(MainActivity.this, TaskListView.class);
                             startActivity(intent);
                             finish();
                         } else {

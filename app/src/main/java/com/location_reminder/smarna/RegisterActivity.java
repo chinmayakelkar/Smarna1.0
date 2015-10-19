@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-                                Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                                Intent intent = new Intent(RegisterActivity.this,TaskListView.class);
                                 startActivity(intent);
                                 finish();
                             } else {

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.location_reminder.smarna.TaskListView">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/Help"  android:orderInCategory="102" android:title="@string/Help" app:showAsAction="never" />
+    <item android:id="@+id/Logout" android:orderInCategory="102" android:title="@string/Logout" app:showAsAction="never"   />
+    <item android:id="@+id/search_id"
+        android:title="Search"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="always">
+    </item>
+</menu>
