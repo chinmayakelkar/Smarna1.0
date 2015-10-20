@@ -25,4 +25,11 @@
         android:text="Email id"
         android:id="@+id/textView3"
         android:textSize="25sp"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Task"
+        android:id="@+id/addtask" />
 </LinearLayout>

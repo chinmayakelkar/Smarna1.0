@@ -1,43 +1,138 @@
 package com.location_reminder.smarna;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class RegisterActivity extends AppCompatActivity implements OnClickListener{
-    EditText etusername, etemailid ,etpassword;
-    Button bregister;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegisterActivity extends AppCompatActivity {
+
+    EditText etusername, etemailid, etpassword;
+    Button btregister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_layout);
-        etusername=(EditText)findViewById(R.id.username);
-        etemailid=(EditText)findViewById(R.id.emailid);
-        etpassword=(EditText)findViewById(R.id.password);
-        bregister=(Button)findViewById(R.id.bregister);
-        bregister.setOnClickListener(this);
-        Button bregister;
+        etusername = (EditText) findViewById(R.id.username);
+        etemailid = (EditText) findViewById(R.id.emailid);
+        etpassword = (EditText) findViewById(R.id.password);
+        btregister = (Button) findViewById(R.id.bregister);
+
+
         TextView signinScreen = (TextView) findViewById(R.id.signin_link);
+        //final String emailid= etemailid.getText().toString().trim();
 
-        // Listening to Login Screen link
-        signinScreen.setOnClickListener(this);
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.bregister:
-                String username=etusername.getText().toString();
-                String password=etpassword.getText().toString();
-                String emailid=etemailid.getText().toString();
-                User registeredData=new User(username,emailid,password);
-                break;
-            case R.id.signin_link:
+        //pDialog = new ProgressDialog(this);
+        //pDialog.setCancelable(false);
+        /*etemailid.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!(emailValidator(emailid)))
+                {
+                    Toast.makeText(getApplicationContext(), "Pleae enter a valid email address!", Toast.LENGTH_SHORT).show();
+            }
+            }
+        });*/
+        btregister.setOnClickListener(new View.OnClickListener() {
+            public void onClick( final View view) {
+                view.setEnabled(false);
+                String name = etusername.getText().toString().trim();
+                String email = etemailid.getText().toString().trim();
+                String password = etpassword.getText().toString().trim();
+
+                if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+
+                    ParseUser user = new ParseUser();
+                    user.setUsername(name);
+                    user.setPassword(password);
+                    user.setEmail(email);
+                    user.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(RegisterActivity.this,TaskListView.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                // Sign up didn't succeed. Look at the ParseException
+                                // to figure out what went wrong
+                                switch(e.getCode()){
+                                    case ParseException.USERNAME_TAKEN:
+                                        Toast.makeText(getApplicationContext(), "An account with this username already exists!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case ParseException.EMAIL_MISSING:
+                                        Toast.makeText(getApplicationContext(), "Please enter your email!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case ParseException.EMAIL_TAKEN:
+                                        Toast.makeText(getApplicationContext(), "An account with this email already exits!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case ParseException.PASSWORD_MISSING:
+                                        Toast.makeText(getApplicationContext(), "Pleas enter your password!", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    default:
+                                        Toast.makeText(getApplicationContext(), "An error occured in Registration...Please try again", Toast.LENGTH_SHORT).show();
+                                        break;
+                                }
+                                view.setEnabled(true);
+                            }
+                        }
+                });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter your details!", Toast.LENGTH_LONG)
+                            .show();
+                }
+            }
+        });
+
+        // Link to Login Screen
+        signinScreen.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),
+                        MainActivity.class);
+                startActivity(i);
                 finish();
-        }
+            }
+        });
+
     }
+    /*public boolean emailValidator(String email)
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }*/
 }
+
