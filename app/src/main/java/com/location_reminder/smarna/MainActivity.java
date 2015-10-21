@@ -1,54 +1,66 @@
 package com.location_reminder.smarna;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import android.app.AlertDialog.Builder;
+import android.app.AlertDialog;
 import com.parse.LogInCallback;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button blogin;
-
+    TextView fgpassword;
     EditText etemail, etpassword;
 
-   // private ProgressDialog pDialog;
-
+    // private ProgressDialog pDialog;
+    private String emailid="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        etemail = (EditText) findViewById(R.id.Email);
+        etemail = (EditText) findViewById(R.id.Username);
+        //etemail.setHintTextColor(Color.GRAY);
+
         etpassword = (EditText) findViewById(R.id.password);
+        etpassword.setHintTextColor(Color.GRAY);
         blogin = (Button) findViewById(R.id.blogin);
 
         blogin.setOnClickListener(this);
-
+        TextView fgpassword=(TextView)findViewById(R.id.fgpassword);
+        fgpassword.setPaintFlags(fgpassword.getPaintFlags()|Paint.UNDERLINE_TEXT_FLAG);
+        fgpassword.setOnClickListener(this);
         TextView registerScreen = (TextView) findViewById(R.id.register_link);
+        registerScreen.setPaintFlags(registerScreen.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
         registerScreen.setOnClickListener(this);
-        
-        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        //ParseUser currentUser = ParseUser.getCurrentUser();
         ParseObject testObject = new ParseObject("TestObject");
         testObject.put("foo", "bar");
         testObject.saveInBackground();
-        if (currentUser != null) {
+        /*if (currentUser != null) {
             Intent intent = new Intent(MainActivity.this, Logout.class);
             startActivity(intent);
             finish();
-        }
+        }*/
     }
 
 
@@ -64,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if (user != null) {
-                            Intent intent = new Intent(MainActivity.this, Logout.class);
+                            Intent intent = new Intent(MainActivity.this, TaskListView.class);
                             startActivity(intent);
                             finish();
                         } else {
@@ -101,8 +113,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 finish();
             }
+            break;
+            case R.id.fgpassword:
+            {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+                alertDialog.setTitle("Reset Password");
+                alertDialog.setMessage("Please enter your email address");
 
+                // Set up the input
+                final EditText input = new EditText(this);
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                alertDialog.setView(input);
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, int which) {
+                        // User pressed OK button. Write Logic Here
+                        emailid = input.getText().toString();
+                        ParseUser.requestPasswordResetInBackground(emailid, new RequestPasswordResetCallback() {
+                            public void done(ParseException e) {
+                                if (e == null) {
+                                    dialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), "An email was successfully sent with reset instructions", Toast.LENGTH_LONG).show();
+                                    // Something went wrong. Look at the ParseException to see what's up.
 
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(), "Sorry no account with this email address exits", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.show();
+            }
+            break;
         }
 
     }
