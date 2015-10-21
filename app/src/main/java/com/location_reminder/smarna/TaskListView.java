@@ -16,8 +16,11 @@ import android.view.MenuItem;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.parse.ParseUser;
 
+=======
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -54,7 +57,11 @@ public class TaskListView extends AppCompatActivity {
         {
             public  void onClick(View v){
               //  finish();
+<<<<<<< HEAD
                 Intent i= new Intent(TaskListView.this,TaskTemplate.class);
+=======
+                Intent i= new Intent(TaskListView.this,AddTask.class);
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
                 i.putExtra("TaskName","NAME");
                 i.putExtra("Operation","ADD");
                 startActivity(i);
@@ -75,7 +82,10 @@ public class TaskListView extends AppCompatActivity {
                    Intent i= new Intent(TaskListView.this,AddTask.class);
                    i.putExtra("TaskName",task.get(groupPosition).Name);
                    i.putExtra("Operation",task.get(groupPosition).task_option.get(childPosition).toString());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
                    startActivity(i);
 
                }
@@ -111,8 +121,13 @@ public class TaskListView extends AppCompatActivity {
         t2.task_option.add("Edit");
         t2.task_option.add("Complete");
         ArrayList<Task> allTasks = new ArrayList<Task>();
+<<<<<<< HEAD
 //        allTasks.add(t1);
 //        allTasks.add(t2);
+=======
+        allTasks.add(t1);
+        allTasks.add(t2);
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         Iterator itr= TaskList.iterator();
                 while(itr.hasNext())
                 {
@@ -153,12 +168,17 @@ public class TaskListView extends AppCompatActivity {
             startActivity(i);
         }
         if(id== R.id.Logout){
+<<<<<<< HEAD
 
             ParseUser.logOut();
             //ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
             Intent intent = new Intent(TaskListView.this, MainActivity.class);
             startActivity(intent);
             finish();
+=======
+            Intent i= new Intent(TaskListView.this,Logout.class);
+            startActivity(i);
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         }
 
 
