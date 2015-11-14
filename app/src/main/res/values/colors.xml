@@ -3,8 +3,13 @@
 
 
 
+<<<<<<< HEAD
         <color name="ColorPrimary">#56ca5b</color>
         <color name="ColorPrimaryDark">#56ca5b</color>
+=======
+        <color name="ColorPrimary">#58ae4c</color>
+        <color name="ColorPrimaryDark">#58ae4c</color>
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
 
 
 </resources>

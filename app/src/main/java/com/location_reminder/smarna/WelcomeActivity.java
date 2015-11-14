@@ -15,7 +15,11 @@ import com.parse.ParseUser;
 
 public class WelcomeActivity extends AppCompatActivity {
     Button blogin;
+<<<<<<< HEAD
     //TextView bregister;
+=======
+    TextView bregister;
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +27,15 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.getstarted);
 
         blogin=(Button)findViewById(R.id.blogin);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
         //bregister=(TextView)findViewById(R.id.bregister);
+=======
+        bregister=(TextView)findViewById(R.id.bregister);
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             Intent intent = new Intent(WelcomeActivity.this, TaskListView.class);

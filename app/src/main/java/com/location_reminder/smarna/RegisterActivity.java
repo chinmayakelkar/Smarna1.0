@@ -87,9 +87,13 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
+<<<<<<< HEAD
 
                                 db.createUserTable(db,name);
                                 Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+=======
+                                Intent intent = new Intent(RegisterActivity.this,TaskListView.class);
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
                                 startActivity(intent);
                                 finish();
                             } else {

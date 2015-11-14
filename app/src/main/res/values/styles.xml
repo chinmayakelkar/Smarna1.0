@@ -1,10 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
+<<<<<<< HEAD
 
     <!-- Customize your theme here. -->
 
 
+=======
+
+        <!-- Customize your theme here. -->
+
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
     <style name="Edittexttheme">
         <item name="colorControlNormal">#C0C0C0</item>
 
@@ -16,9 +22,23 @@
         <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
 
     </style>
+<<<<<<< HEAD
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+=======
+
+
+        <!-- Base application theme. -->
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/ColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+        <item name="android:icon">@drawable/set_location</item>
+
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

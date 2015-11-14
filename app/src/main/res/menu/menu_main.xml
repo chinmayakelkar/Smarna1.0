@@ -2,6 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".AddTask">
+<<<<<<< HEAD
+=======
+    <item
+        android:id="@+id/action_home"
+        android:orderInCategory="100"
+        android:title="@string/Home"
+        app:showAsAction="never" />
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
 
 
 
