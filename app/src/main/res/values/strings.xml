@@ -19,19 +19,45 @@
     <string name="Intro4">notifications for them</string>
     <string name="start">Let\'s Get Started!</string>
     <string name="Date">Date</string>
+<<<<<<< HEAD
 <string name="Notification_Text">Notification</string>
     <string name="Notification_Title">Notification_Title</string>
+=======
+<<<<<<< HEAD
+<string name="Notification_Text">Notification</string>
+    <string name="Notification_Title">Notification_Title</string>
+=======
+<<<<<<< HEAD
+
+=======
+    <string name="Help">Help</string>
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
     <string name="title_activity_help">Help</string>
     <string name="title_activity_logout">Logout</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_add_task">AddTask</string>
     <string name="title_activity_task_list_view">TaskListView</string>
     <string name="title_activity_test">TestActivity</string>
+<<<<<<< HEAD
     <string name="title_activity_task_template">TaskTemplate</string>
     <string name="Fgpassword"><u>Forgot Password</u></string>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
     <string name="geofence_transition_entered">Entered</string>
     <string name="geofence_transition_exited">Exited</string>
     <string name="unknown_geofence_transition">Unknown Transition</string>
     <string name="geofence_transition_notification_text">Click notification to return to app</string>
+<<<<<<< HEAD
+=======
+=======
+=======
+
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
 
 </resources>

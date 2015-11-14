@@ -19,7 +19,11 @@ import com.parse.ParseUser;
 
 public class WelcomeActivity extends AppCompatActivity {
     Button blogin;
+<<<<<<< HEAD
     //TextView bregister;
+=======
+    TextView bregister;
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
 
 
 
@@ -27,12 +31,25 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.getstarted);
+<<<<<<< HEAD
         KitLocate.initKitLocate(this, "026d0172-5897-4b0e-9f87-58892f14167c");
         KLLocation.addGeofence(this, 29.6192480f,-82.3768000f,500, KLGeofence.Type.IN, "abc");
         KLLocation.registerGeofencing(this, GeofenceCallbackHandler.class);
         blogin=(Button)findViewById(R.id.blogin);
 
+=======
+
+        blogin=(Button)findViewById(R.id.blogin);
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
         //bregister=(TextView)findViewById(R.id.bregister);
+=======
+        bregister=(TextView)findViewById(R.id.bregister);
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             KitLocate.setUniqueUserID(this, currentUser.getUsername());

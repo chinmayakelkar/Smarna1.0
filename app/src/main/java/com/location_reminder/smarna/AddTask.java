@@ -35,6 +35,7 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.LocationServices;
 
+<<<<<<< HEAD
 import com.google.android.gms.maps.model.LatLng;
 
 import java.text.ParseException;
@@ -45,6 +46,25 @@ import java.util.List;
 
 import kitlocate.com.kl.kitlocate.class_interface.*;
 import kitlocate.com.kl.kitlocate.interfaces.*;
+=======
+<<<<<<< HEAD
+import com.google.android.gms.maps.model.LatLng;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+=======
+<<<<<<< HEAD
+import com.parse.ParseUser;
+
+=======
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+import java.sql.Time;
+import java.text.DateFormat;
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
 import com.parse.ParseUser;
 
 import java.util.Calendar;
@@ -52,6 +72,10 @@ import java.util.Calendar;
 /**
  * Created by Chinmaya on 08-Oct-15.
  */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
 public class AddTask extends AppCompatActivity  implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<Status>{
 
@@ -65,6 +89,13 @@ public class AddTask extends AppCompatActivity  implements
 
     private PendingIntent mGeofencePendingIntent;
     private MyPlaces myplaces;
+<<<<<<< HEAD
+=======
+=======
+public class AddTask extends AppCompatActivity {
+<<<<<<< HEAD
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
 
     Button voice,location;
     Button  addTask;
@@ -80,7 +111,25 @@ public class AddTask extends AppCompatActivity  implements
     String Username;
     Long TaskMilliseconds=new Long(0);
     int TimePickermilliseconds=0;
+<<<<<<< HEAD
+=======
 
+=======
+
+    Button voice,location;;
+    Button  addTask;
+    Button datePicker;
+    int T_year,T_month,T_day;
+    static final int Dialog_Id=0;
+    Button TimePicker;
+    static final int Dialog_Id1=1;
+    int T_Hour,T_Minute;
+    EditText taskdescription,TaskDate,TaskTime;
+    TaskDetails taskDetail;
+    Context ctx=this;
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
+
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
     String taskDesc,taskLocation,taskDate,taskTime;
     EditText TaskDesc_text,Loc_Text,Time_Text,Date_Text,ShowCount;
     DatabaseOperations db;
@@ -97,7 +146,10 @@ public class AddTask extends AppCompatActivity  implements
         myFences = new ArrayList<Geofence>();
 
         buildGoogleApiClient();
+<<<<<<< HEAD
         KitLocate.initKitLocate(this, "026d0172-5897-4b0e-9f87-58892f14167c");
+=======
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
         // Instantiate a new geofence storage area.
         mGeofenceStorage = new SimpleGeofenceStore(this);
 
@@ -114,7 +166,11 @@ public class AddTask extends AppCompatActivity  implements
 //        actionbar.setLogo(R.drawable.set_location);
 //        actionbar.setDisplayUseLogoEnabled(true);
 //        actionbar.setDisplayShowHomeEnabled(true);
+<<<<<<< HEAD
         location=(Button)findViewById(R.id.setlocation);
+=======
+
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         TaskDesc_text= (EditText) findViewById(R.id.taskdescription);
         Log.i("MyApp", "reached here also is");
         Loc_Text= (EditText) findViewById(R.id.location);
@@ -125,9 +181,22 @@ public class AddTask extends AppCompatActivity  implements
        // Log.i("Passed Data",in.getStringExtra("TaskName"));
         Boolean b=in.getStringExtra("Operation").toString().equalsIgnoreCase("Edit");
         Log.i("Comparison",b.toString());
+<<<<<<< HEAD
 
         String str=in.getStringExtra("location").toString();
 //        Log.i("location",str);
+=======
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+        String str=in.getStringExtra("location").toString();
+//        Log.i("location",str);
+=======
+=======
+        Log.i("Activity","OHHHH ITSSSS HERE IN");
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
         if(in.getStringExtra("Operation").toString().equalsIgnoreCase("Edit")) {
 
             TaskDetails Edittask = db.getTask(db, in.getStringExtra("TaskName").toString(),Username);
@@ -140,6 +209,7 @@ public class AddTask extends AppCompatActivity  implements
 
         }
 
+<<<<<<< HEAD
         if(in.getStringExtra("Operation").toString().equalsIgnoreCase("TemplateAdd")) {
 
            // TaskDetails Edittask = db.getTask(db, in.getStringExtra("TaskName").toString());
@@ -150,8 +220,23 @@ public class AddTask extends AppCompatActivity  implements
 //            Date_Text.setText(Edittask.Task_Date);
 
         }
+<<<<<<< HEAD
         Log.i("Passed Data", in.getStringExtra("TaskName"));
+=======
+<<<<<<< HEAD
+=======
 
+
+=======
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+
+
+
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+        Log.i("Passed Data",in.getStringExtra("TaskName"));
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
+
+<<<<<<< HEAD
 
         Button voice=(Button)findViewById(R.id.speak);
         location.setOnClickListener(new View.OnClickListener()
@@ -164,8 +249,20 @@ public class AddTask extends AppCompatActivity  implements
 
             }
         });
+=======
+        Button voice=(Button)findViewById(R.id.speak);
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
 
         taskdescription=(EditText)findViewById(R.id.taskdescription);
+        location.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTask.this, MapActivity.class);
+
+                startActivity(intent);
+            }
+        });
         voice.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -205,7 +302,19 @@ public class AddTask extends AppCompatActivity  implements
                     Log.i("Total Task Milliseconds",TaskMilliseconds.toString());
                 }
                 Log.v("MyApp", "reached here");
+<<<<<<< HEAD
                 if((taskDetail.Taskname.isEmpty()) || (taskDetail.Task_Time.isEmpty()) ||(taskDetail.Location.isEmpty())|| (taskDetail.Task_Date.isEmpty())) {
+=======
+<<<<<<< HEAD
+                if((taskDetail.Taskname.isEmpty()) || (taskDetail.Task_Time.isEmpty()) ||(taskDetail.Location.isEmpty())|| (taskDetail.Task_Date.isEmpty())) {
+=======
+<<<<<<< HEAD
+                if((taskDetail.Taskname.isEmpty()) || (taskDetail.Task_Time.isEmpty()) || (taskDetail.Task_Date.isEmpty())) {
+=======
+                if((taskDetail.Taskname.isEmpty()) || (taskDetail.Location.isEmpty()) || (taskDetail.Task_Time.isEmpty()) || (taskDetail.Task_Date.isEmpty())) {
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
                     Toast.makeText(getBaseContext(), "Please Enter All the Required Fields", Toast.LENGTH_LONG).show();
                     Log.v("MyApp", "Empty Fields ");
                 }
@@ -223,9 +332,13 @@ public class AddTask extends AppCompatActivity  implements
                     Toast.makeText(getBaseContext(), "Task Saved", Toast.LENGTH_LONG).show();
                     myplaces=new MyPlaces(taskDetail.Taskname,in.getDoubleExtra("Latitude",0),in.getDoubleExtra("Longitude", 0),10, TaskMilliseconds);
                     addFence(myplaces);
+<<<<<<< HEAD
                     KLLocation.addGeofence(AddTask.this, (float) in.getDoubleExtra("Latitude", 0), (float) in.getDoubleExtra("Longitude", 0), 500, KLGeofence.Type.IN, "abc");
                     KLLocation.registerGeofencing(AddTask.this,GeofenceCallbackHandler.class);
                     //KLGeofence myGeofence = new KLGeofence((float)in.getDoubleExtra("Latitude",0), (float)in.getDoubleExtra("Longitude", 0),100, KLGeofence.Type.IN);
+=======
+                    //monitorFences(myFences);
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
                     finish();
                     Log.e(TAG, "Add task finished");
                     Intent i = new Intent(AddTask.this,TaskListView.class);
@@ -387,6 +500,7 @@ public class AddTask extends AppCompatActivity  implements
                     }
                 }
         );
+<<<<<<< HEAD
     }
 
 
@@ -418,15 +532,62 @@ public class AddTask extends AppCompatActivity  implements
         return null;
     }
 
+=======
+    }
+
+
+
+    public void shoDialog()
+    {
+        datePicker=(Button)findViewById(R.id.DateButton);
+        datePicker.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDialog(Dialog_Id);
+                    }
+                }
+
+
+        );
+
+
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id)
+    {
+        if(id==Dialog_Id)
+            return new DatePickerDialog(this,dpickerListener,T_year,T_month,T_day);
+        if(id==Dialog_Id1)
+            return  new TimePickerDialog(this,Tpclicklistener,T_Hour,T_Minute,true);
+        return null;
+    }
+
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
     private TimePickerDialog.OnTimeSetListener Tpclicklistener=
             new TimePickerDialog.OnTimeSetListener() {
                 public void onTimeSet(android.widget.TimePicker view, int hourofDay, int minute) {
                     T_Hour = hourofDay;
                     T_Minute = minute;
+<<<<<<< HEAD
                     String   timeformat;
+<<<<<<< HEAD
                     TimePickermilliseconds=(((hourofDay * 3600) + (minute * 60)) * 1000) ;
 
                     //    Toast.makeText(AddTask.this, T_Hour + ":" + T_Minute , Toast.LENGTH_LONG).show();
+=======
+<<<<<<< HEAD
+                    TimePickermilliseconds=(((hourofDay * 3600) + (minute * 60)) * 1000) ;
+
+                    //    Toast.makeText(AddTask.this, T_Hour + ":" + T_Minute , Toast.LENGTH_LONG).show();
+=======
+                //    Toast.makeText(AddTask.this, T_Hour + ":" + T_Minute , Toast.LENGTH_LONG).show();
+=======
+                    Toast.makeText(AddTask.this, T_Hour + ":" + T_Minute , Toast.LENGTH_LONG).show();
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
                     TaskTime= (EditText)findViewById(R.id.settime);
 
 
@@ -437,6 +598,7 @@ public class AddTask extends AppCompatActivity  implements
 //                    cal.set(Calendar.HOUR,T_Hour);
 //                    cal.set(Calendar.MINUTE, T_Minute);
 //                    TaskTime.setText((int) cal.);
+<<<<<<< HEAD
                     String.format("%02d", T_Hour);
                     String.format("%02d", T_Minute);
 
@@ -445,6 +607,16 @@ public class AddTask extends AppCompatActivity  implements
                     else
                         timeformat="P.M.";
                     TaskTime.setText(String.format("%02d", T_Hour) + ":" +  String.format("%02d", T_Minute) +" "+timeformat);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+                    TaskTime.setText(T_Hour + ":" + T_Minute +" "+ android.text.format.DateFormat.is24HourFormat(ctx));
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
                 }
             };
 
@@ -455,6 +627,10 @@ public class AddTask extends AppCompatActivity  implements
             T_year=year;
             T_month=monthOfYear+1;
             T_day=dayOfMonth;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
             SimpleDateFormat dateformat= new SimpleDateFormat("MMMM dd yyyy hh:mm:ss");
             Calendar cal = Calendar.getInstance();
             String currDate= dateformat.format(cal.getTime());
@@ -464,6 +640,7 @@ public class AddTask extends AppCompatActivity  implements
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+<<<<<<< HEAD
 
             cal.set(year, monthOfYear, dayOfMonth,00,00,00);
             String setDate= dateformat.format(cal.getTime());
@@ -501,6 +678,54 @@ public class AddTask extends AppCompatActivity  implements
                 TaskDate.setText(T_year + "/" + T_month + "/" + T_day);
                 TaskMilliseconds = taskDate.getTime()- TodaysDate.getTime();
 
+=======
+=======
+<<<<<<< HEAD
+           // Toast.makeText(AddTask.this, T_year + "/" + T_month + "/" + T_day, Toast.LENGTH_LONG).show();
+=======
+            Toast.makeText(AddTask.this, T_year + "/" + T_month + "/" + T_day, Toast.LENGTH_LONG).show();
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
+            TaskDate= (EditText)findViewById(R.id.setdate2);
+            TaskDate.setText(T_year + "/" + T_month + "/" + T_day);
+>>>>>>> 0125b8b45ae01fc5ffc6bef3983758392847d693
+
+            cal.set(year, monthOfYear, dayOfMonth,00,00,00);
+            String setDate= dateformat.format(cal.getTime());
+            Date taskDate= new Date();
+            try {
+                taskDate= dateformat.parse(setDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+           Log.i("GetDate", "Date" + taskDate.getDate());
+            SimpleDateFormat dateformat2= new SimpleDateFormat("MMMM dd yyyy");
+            Date date1=new Date();
+            Date date2= new Date();
+            try {
+                String date1string= dateformat2.format(TodaysDate);
+                String date2string=dateformat2.format(taskDate);
+                date1= dateformat2.parse(date1string);
+                date2= dateformat2.parse(date2string);
+                Log.i("TODAYS DATE",date1.toString());
+                Log.i("Task DATE",taskDate.toString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            Log.i("data format", TodaysDate + "  " + taskDate);
+
+            if(date2.compareTo(date1)<0)
+            {
+                Toast.makeText(getBaseContext(), "Invalid Task Date", Toast.LENGTH_LONG).show();
+            }
+            else {
+
+                TaskDate = (EditText) findViewById(R.id.setdate2);
+                TaskDate.setText(T_year + "/" + T_month + "/" + T_day);
+                TaskMilliseconds = taskDate.getTime()- TodaysDate.getTime();
+
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
             }
         }
 
@@ -531,6 +756,10 @@ public class AddTask extends AppCompatActivity  implements
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
 
+<<<<<<< HEAD
+=======
+        }
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         if(id==R.id.Logout)
         {
             ParseUser.logOut();

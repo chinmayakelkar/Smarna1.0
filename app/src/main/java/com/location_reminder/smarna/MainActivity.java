@@ -81,7 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             Intent intent = new Intent(MainActivity.this, TaskListView.class);
                             ParseUser currentUser=ParseUser.getCurrentUser();
+<<<<<<< HEAD
                             KitLocate.setUniqueUserID(MainActivity.this, currentUser.getUsername());
+=======
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
                             String strUser=currentUser.getUsername().toString();
                             intent.putExtra("Username",strUser);
                             startActivity(intent);

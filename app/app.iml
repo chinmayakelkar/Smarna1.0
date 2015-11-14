@@ -132,9 +132,18 @@
     <orderEntry type="library" exported="" name="appcompat-v7-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-cast-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" exported="" name="play-services-appinvite-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.4" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-8.1.0" level="project" />
+=======
+    <orderEntry type="library" exported="" name="gimbal" level="project" />
+    <orderEntry type="library" exported="" name="play-services-appinvite-8.1.0" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.4" level="project" />
+    <orderEntry type="library" exported="" name="gimbal-dev-logging" level="project" />
+    <orderEntry type="library" exported="" name="play-services-ads-8.1.0" level="project" />
+    <orderEntry type="library" exported="" name="spring-android-rest-template-1.0.1.RELEASE" level="project" />
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
     <orderEntry type="library" exported="" name="play-services-appstate-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-gcm-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="design-23.0.1" level="project" />
@@ -144,11 +153,18 @@
     <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="bolts-applinks-1.3.0" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" exported="" name="kitlocate" level="project" />
+=======
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
     <orderEntry type="library" exported="" name="play-services-nearby-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-panorama-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-fitness-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-wearable-8.1.0" level="project" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="library" exported="" name="spring-android-core-1.0.1.RELEASE" level="project" />
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
     <orderEntry type="library" exported="" name="play-services-plus-8.1.0" level="project" />
   </component>
 </module>

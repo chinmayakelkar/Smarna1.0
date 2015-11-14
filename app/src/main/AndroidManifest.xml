@@ -15,12 +15,16 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <permission android:name="com.kl.kitlocate" android:protectionLevel="signatureOrSystem" android:label="KitLocate broadcast permission"/>
     <uses-permission android:name="com.kl.kitlocate.KITLOCATE"/>
+=======
+
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="22"/>
@@ -36,33 +40,59 @@
         android:allowBackup="true"
         android:icon="@mipmap/homeicon2"
         android:label="@string/app_name"
+<<<<<<< HEAD
         android:theme="@style/AppTheme">
 
+=======
+        android:theme="@style/AppTheme" >
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"
 
             android:configChanges="orientation|screenSize">
+=======
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
             <!-- for the RegisterActivity.class -->
         </activity>
-        <activity android:name=".RegisterActivity"
+        <activity
+            android:name=".RegisterActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Register New Account"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"
 
             android:configChanges="orientation|screenSize">
         </activity>
 
         <activity android:name=".WelcomeActivity"
+=======
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Logout"
+            android:configChanges="orientation|screenSize"
+            android:label="Logout of Smarna"
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:configChanges="orientation|screenSize"
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
             android:label="Smarna"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:configChanges="orientation|screenSize">
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
         <activity
             android:name=".Settings"
@@ -92,6 +122,24 @@
             android:name=".TaskTemplate"
             android:label="@string/title_activity_task_template"
             android:configChanges="orientation|screenSize">
+=======
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".Help"
+            android:label="@string/title_activity_help" >
+        </activity>
+        <activity
+            android:name=".TaskListView"
+            android:label="@string/title_activity_task_list_view"
+            android:icon="@drawable/set_location">
+        </activity>
+        <activity
+            android:name=".AddTask"
+            android:label="@string/title_activity_add_task" >
+>>>>>>> 0d66c1ab5386cf0bae91b5aec364989d2c1789db
         </activity>
         <activity android:name=".MapActivity"
             android:label="Map"
@@ -105,6 +153,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+<<<<<<< HEAD
 
         <receiver android:name="com.kl.kitlocate.receivers.KLBroadcastReceiver" android:exported="true">
             <intent-filter>
@@ -131,6 +180,17 @@
             <action android:name="com.aol.android.geofence.ACTION_RECEIVE_GEOFENCE"/>
         </intent-filter>
     </receiver>
+=======
+        <receiver
+            android:name="com.location_reminder.smarna.GeofenceTransitionReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter >
+                <action android:name="com.aol.android.geofence.ACTION_RECEIVE_GEOFENCE"/>
+            </intent-filter>
+        </receiver>
+
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
        
     </application>
 

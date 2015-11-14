@@ -30,7 +30,14 @@ dependencies {
     compile files('libs/Parse-1.10.2.jar')
     compile 'com.google.android.gms:play-services:8.1.0'
     compile 'com.google.code.gson:gson:2.4'
+<<<<<<< HEAD
     compile fileTree(include:'kitlocate.jar', dir: 'libs')
+=======
+    compile files('libs/gimbal.jar')
+    compile files('libs/gimbal-dev-logging.jar')
+    compile files('libs/spring-android-core-1.0.1.RELEASE.jar')
+    compile files('libs/spring-android-rest-template-1.0.1.RELEASE.jar')
+>>>>>>> 0c726a28134350d1f7ca760a9732263bc10e13f0
 }
 
 
