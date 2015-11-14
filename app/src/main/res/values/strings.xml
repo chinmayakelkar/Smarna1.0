@@ -19,7 +19,8 @@
     <string name="Intro4">notifications for them</string>
     <string name="start">Let\'s Get Started!</string>
     <string name="Date">Date</string>
-
+<string name="Notification_Text">Notification</string>
+    <string name="Notification_Title">Notification_Title</string>
     <string name="title_activity_help">Help</string>
     <string name="title_activity_logout">Logout</string>
     <string name="title_activity_settings">Settings</string>
@@ -28,5 +29,9 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_task_template">TaskTemplate</string>
     <string name="Fgpassword"><u>Forgot Password</u></string>
+    <string name="geofence_transition_entered">Entered</string>
+    <string name="geofence_transition_exited">Exited</string>
+    <string name="unknown_geofence_transition">Unknown Transition</string>
+    <string name="geofence_transition_notification_text">Click notification to return to app</string>
 
 </resources>

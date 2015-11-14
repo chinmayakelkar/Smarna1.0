@@ -12,6 +12,7 @@ import com.parse.ParseUser;
 /**
  * Created by Chinmaya on 10-Oct-15.
  */
+
 public class WelcomeActivity extends AppCompatActivity {
     Button blogin;
     //TextView bregister;
@@ -20,7 +21,9 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.getstarted);
+
         blogin=(Button)findViewById(R.id.blogin);
+
         //bregister=(TextView)findViewById(R.id.bregister);
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {

@@ -1,6 +1,7 @@
 package com.location_reminder.smarna;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -24,9 +25,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    Context ctx=this;
     EditText etusername, etemailid, etpassword;
     Button btregister;
+    DatabaseOperations db= new DatabaseOperations(ctx);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         btregister.setOnClickListener(new View.OnClickListener() {
             public void onClick( final View view) {
                 view.setEnabled(false);
-                String name = etusername.getText().toString().trim();
+                final String name = etusername.getText().toString().trim();
                 String email = etemailid.getText().toString().trim();
                 String password = etpassword.getText().toString().trim();
 
@@ -85,6 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
+
+                                db.createUserTable(db,name);
                                 Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -125,6 +129,11 @@ public class RegisterActivity extends AppCompatActivity {
         signinScreen.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
+                ParseUser currentUser=ParseUser.getCurrentUser();
+
+              String Username=currentUser.getUsername().toString();
+db.createUserTable(db,Username);
+
                 Intent i = new Intent(getApplicationContext(),
                         MainActivity.class);
                 startActivity(i);

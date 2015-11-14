@@ -25,29 +25,30 @@ import java.util.Objects;
 
 public class TaskListView extends AppCompatActivity {
     Context ctx=this;
-    DatabaseOperations db=new DatabaseOperations(ctx);
+    DatabaseOperations db= new DatabaseOperations(ctx);
     TaskDetails taskDetails;
+    String Username;
+    ParseUser currentUser;
     @Override
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list_view);
-     //   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-      //  setSupportActionBar(toolbar);
 
+        Intent in=getIntent();
+        if (in.hasExtra("Username")) {
+            Log.i("Username", in.getStringExtra("Username").toString());
 
-//        android.support.v7.app.ActionBar actionbar= getSupportActionBar();
-//        actionbar.setLogo(R.drawable.set_location);
-//
-//        actionbar.setDisplayUseLogoEnabled(true);
-//        actionbar.setDisplayShowHomeEnabled(true);
+            Username=in.getStringExtra("Username").toString();
+        }
+        else
+        {
+            currentUser=ParseUser.getCurrentUser();
 
-
-
-
-
-
+            Username=currentUser.getUsername().toString();
+        }
+      // db= new DatabaseOperations(ctx);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener()
@@ -57,6 +58,7 @@ public class TaskListView extends AppCompatActivity {
                 Intent i= new Intent(TaskListView.this,TaskTemplate.class);
                 i.putExtra("TaskName","NAME");
                 i.putExtra("Operation","ADD");
+                i.putExtra("Username",Username);
                 startActivity(i);
             }
         });
@@ -74,14 +76,15 @@ public class TaskListView extends AppCompatActivity {
                {
                    Intent i= new Intent(TaskListView.this,AddTask.class);
                    i.putExtra("TaskName",task.get(groupPosition).Name);
+                   i.putExtra("location","");
                    i.putExtra("Operation",task.get(groupPosition).task_option.get(childPosition).toString());
-
+                   i.putExtra("Username",Username);
                    startActivity(i);
 
                }
                 if(task.get(groupPosition).task_option.get(childPosition)=="Complete")
                 {
-                    db.deleteInformation(db, task.get(groupPosition).Name);
+                    db.deleteInformation(db, task.get(groupPosition).Name,Username);
                     finish();
                     Intent i= new Intent(TaskListView.this,TaskListView.class);
                     startActivity(i);
@@ -101,7 +104,7 @@ public class TaskListView extends AppCompatActivity {
        // String[] TaskDescList= new String()[10];
         List<TaskDetails> TaskList = new ArrayList<TaskDetails>();
         TaskDetails t= new TaskDetails();
-        TaskList= db.getInformation(db);
+        TaskList= db.getInformation(db,Username);
 
         Task t1=new Task("Grocery Shopping");
         t1.task_option.add("Edit");
