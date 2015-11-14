@@ -1,23 +1,98 @@
 package com.location_reminder.smarna;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
 public class Settings extends AppCompatActivity {
+    private static SeekBar seek_bar;
+    private static TextView text_view;
+    Context ctx = this;
+    int Rad_progress_value;
+    int Freq_progress_value;
+    DatabaseOperations db = new DatabaseOperations(ctx);
+    ParseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-       // android.support.v7.app.ActionBar actionbar= getSupportActionBar();
+        // android.support.v7.app.ActionBar actionbar= getSupportActionBar();
 //        actionbar.setLogo(R.drawable.set_location);
 //        actionbar.setDisplayUseLogoEnabled(true);
 //        actionbar.setDisplayShowHomeEnabled(true);
+        seekbar_freq();
+        seekbar_radius();
+    }
+
+    public void seekbar_freq() {
+        seek_bar = (SeekBar) findViewById(R.id.seekBar);
+        seek_bar.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+
+
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        Freq_progress_value = progress;
+                        if (progress == 0)
+                            Toast.makeText(Settings.this, "Low - Notify only once", Toast.LENGTH_LONG).show();
+                        if (progress == 1)
+                            Toast.makeText(Settings.this, "Medium - Once in three hours ", Toast.LENGTH_LONG).show();
+                        if (progress == 2)
+                            Toast.makeText(Settings.this, "High - Notify every hour", Toast.LENGTH_LONG).show();
+
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+
+                    }
+                }
+        );
+    }
+
+    public void seekbar_radius() {
+        seek_bar = (SeekBar) findViewById(R.id.seekBar2);
+        seek_bar.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+
+
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        Rad_progress_value = progress;
+                        if (progress == 0)
+                            Toast.makeText(Settings.this, "Immediate - Within half a mile", Toast.LENGTH_LONG).show();
+                        if (progress == 1)
+                            Toast.makeText(Settings.this, "Near - 2 miles", Toast.LENGTH_LONG).show();
+                        if (progress == 2)
+                            Toast.makeText(Settings.this, "Far - 5 miles", Toast.LENGTH_LONG).show();
+
+
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                    }
+                }
+        );
     }
 
     @Override
@@ -46,10 +121,31 @@ public class Settings extends AppCompatActivity {
             finish();
         }
 
-        if(id== R.id.Help){
-            Intent i= new Intent(Settings.this,Help.class);
+        if (id == R.id.Help) {
+            Intent i = new Intent(Settings.this, Help.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        UserSettings settings= new UserSettings();
+        settings.NotificationFreq=Freq_progress_value;
+
+        if(Rad_progress_value==0)
+            settings.NotificationRadius=500;
+        if(Rad_progress_value==1)
+            settings.NotificationRadius=1000;
+        if(Rad_progress_value==2)
+            settings.NotificationRadius=3000;
+
+        currentUser=ParseUser.getCurrentUser();
+        db.putSettingsInfo(db,settings,currentUser.getUsername().toString());
+        Log.i("Setting added","User settings added to database");
+
+        super.onBackPressed();
+
     }
 }

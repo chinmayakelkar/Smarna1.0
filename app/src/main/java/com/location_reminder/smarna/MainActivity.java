@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import android.app.AlertDialog.Builder;
 import android.app.AlertDialog;
+
+import com.kl.kitlocate.interfaces.KitLocate;
 import com.parse.LogInCallback;
 
 import com.parse.ParseException;
@@ -76,7 +78,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if (user != null) {
+
                             Intent intent = new Intent(MainActivity.this, TaskListView.class);
+                            ParseUser currentUser=ParseUser.getCurrentUser();
+                            KitLocate.setUniqueUserID(MainActivity.this, currentUser.getUsername());
+                            String strUser=currentUser.getUsername().toString();
+                            intent.putExtra("Username",strUser);
                             startActivity(intent);
                             finish();
                         } else {

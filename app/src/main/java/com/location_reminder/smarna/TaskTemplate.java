@@ -21,8 +21,8 @@ public class TaskTemplate extends AppCompatActivity {
 
     GridView grid;
     Context ctx;
-    DatabaseOperations db=new DatabaseOperations(ctx);
-
+    DatabaseOperations db;
+    String username;
     String[] task_template = {
             "Buy groceries",
             "Meet someone",
@@ -55,7 +55,10 @@ public class TaskTemplate extends AppCompatActivity {
         setContentView(gridView);
         ImageAdapter adapt = new ImageAdapter(TaskTemplate.this, task_template, imageId);
         gridView.setAdapter(adapt);
-
+        Intent intent=getIntent();
+        if(intent.hasExtra("Username"))
+        username=intent.getStringExtra("Username");
+        db=new DatabaseOperations(ctx,username);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
@@ -64,11 +67,15 @@ public class TaskTemplate extends AppCompatActivity {
                 if(position == 8) {
                     i.putExtra("TaskName", "");
                     i.putExtra("Operation", "");
+                    i.putExtra("location","");
+                    i.putExtra("Username",username);
                     startActivity(i);
                 }
                 else
                 i.putExtra("TaskName",task_template[+position]);
-                        i.putExtra("Operation", "TemplateAdd");
+                i.putExtra("Operation", "TemplateAdd");
+                i.putExtra("location","");
+                i.putExtra("Username",username);
                         startActivity(i);
 
 

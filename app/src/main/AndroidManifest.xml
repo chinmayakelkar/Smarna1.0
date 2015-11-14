@@ -13,6 +13,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <permission android:name="com.kl.kitlocate" android:protectionLevel="signatureOrSystem" android:label="KitLocate broadcast permission"/>
+    <uses-permission android:name="com.kl.kitlocate.KITLOCATE"/>
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="22"/>
     <uses-permission
@@ -89,12 +98,40 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:configChanges="orientation|screenSize">
         </activity>
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBF6_n013Ge29s5q4XjmDahORrujc209ec" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <receiver android:name="com.kl.kitlocate.receivers.KLBroadcastReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.kl.kitlocate.services.KLLocationService" android:label="KitLocate Service"/>
+        <service android:name="com.kl.kitlocate.services.KLAccelerometerService" android:label="KitLocate IDLE Service"/>
+        <receiver
+            android:name="com.kl.kitlocate.receivers.KLGcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.location_reminder.smarna" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.kl.kitlocate.services.KLGcmIntentService" />
+
+        <receiver
+        android:name="com.location_reminder.smarna.GeofenceTransitionReceiver"
+        android:enabled="true"
+        android:exported="false" >
+        <intent-filter >
+            <action android:name="com.aol.android.geofence.ACTION_RECEIVE_GEOFENCE"/>
+        </intent-filter>
+    </receiver>
+       
     </application>
 
 </manifest>
